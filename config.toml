@@ -1,0 +1,140 @@
+# This is the config file for running the decryptM pipeline
+# Please add the parameters here. Don't introduce linebreaks.
+# Please modify this file in a text editor. Excel is NOT a text editor !!
+# 
+# TOC:
+#
+# Meta Data => Additional information about the data set
+# PTMs => Specify the expected PTMs in the data set
+# TMT => Interpretation of the channels
+# Processing => Control of the analysis
+# Path => Relative paths for files to this toml file
+# MaxQuant => MaxQuant related info
+# Plot => Plot parameters
+# CurveFilter => Filter criteria for curves to remove garbage
+#
+
+
+['Meta Data']
+# Add the name of the data set. A dataset can consist of multiple experiments and PTM batches.
+dataset_name = 'Drug X'
+
+# Add your name:
+who = 'Kusterlab'
+
+# Add experiment type: dd -> dose-dependent, td -> time dependent
+experiment_type = 'dd' 
+
+# Add a short description of the experiment:
+experiment_description = 'Drug X in cell Y for Z min'
+
+# Add the drug type:
+drug_type = 'Alpha Inhibitor'
+
+# Add the cell types. Multiple is possible ['Cell 1', 'Cell 2', ...]:
+cells = ['Cell Y']
+
+# Add the treatment dose in td experiments:
+treatment_dose = ''
+
+# Add the treatment time in dd experiments:
+treatment_time = 'Z min'
+
+
+['PTMs']
+# Add with <true> or <false>, if a PTM is present in the data set:
+Fullproteome = false
+Phosphorylation = true
+Ubiquitinylation = false
+Acetylation = false
+
+
+['TMT']
+# The TMT plex number e.g. 6, 10, 11, 16, 18, ... :
+plex = 10
+
+# The TMT quantification type. It could be lfq, ms2, or ms3.
+quantification = 'ms3'
+
+# The correction factor lot number e.g. 'UF291262_UE277617'. This is relevant for TMT data:
+correction_lot = 'TE268169'
+
+# TMT-channel list: 1:126, 2:127N, 3:127C, ... :
+# The length must match with the doses or time_points array 
+channels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  
+
+# Write the drug concentrations in the same order as the channels. DMSO control as 0.0:
+# The length must match with channels array
+doses = [100.0, 30.0, 10.0, 3.0, 1.0, 0.3, 0.1, 0.03, 0.01, 0.0]
+
+# Add here the concentration scale factor eg. 1 nM = '1e-9' in the channels array:
+dose_scale = '1e-9'
+
+# Concentration unit after applying dose scaling factor e.g. '1e-9': 'M' or '1': 'nM'
+dose_label = 'M'
+
+# Write the time points in the same order as the channels.:
+# The length must match with channels array
+time_points = []  # List of time points
+
+# The units of the time array e.g. 'h':
+time_label = 'h' 
+
+
+['Processing']
+# TMT control channel to which the ratios should be calculated:
+control_channel = 10
+
+# Normalization based on a subproteome in the evidence e.g. 'Phosphoproteome':
+# Put '' for using all peptides for normalization:
+subproteome_normalization = 'Phosphoproteome'
+
+# Should the data points be fitted by a logistic model?
+fit_logistic_model = true
+
+# Should the simple fitting approach be applied?
+# interpolation boundaries are only relevant for the optimized and not the simple fit. Default low=1, high=0
+simple_fit = false
+interpolation_low_exclude = 1
+interpolation_high_exclude = 0
+
+
+['Paths']
+# Output paths. Add the relative paths to a folder where the curves file and the pdfs will be stored (from the perspective of this toml file).
+table_out_folder = ''
+output_file = 'curves.txt'
+pdf_out_folder = 'pdfs'
+
+
+['MaxQuant']
+# MaxQuant meta data and file paths
+MQ_version = '1.6.12.0'
+txt_foler = 'combined\txt'
+input_file = 'evidence.txt'
+
+# The column names from the MaxQuant output that should be copied and aggregated in the curves file. 
+# Depending on the data in the columns, different aggregation strategies must be applied.
+# info cols store information that is the same for each curve
+# max cols will use the maximum value for duplicates when aggregated
+# min cols will use the minimum value for duplicates when aggregated
+# concat cols will concatenate all values of each duplicate when aggregated
+evd_info_cols = ['Sequence', 'Length', 'Missed cleavages', 'Proteins', 'Leading proteins', 'Gene names', 'Protein names']
+evd_max_cols = ['Score']
+evd_min_cols = ['PEP']
+evd_concat_cols = ['Phospho (STY) Probabilities']
+
+
+['Plot']
+# Modulating the plot
+up_down_pdfs = true
+curve_x_extrapolate = [-1.0, 0.5]
+plot_helper_line = [0.55, 2.00]
+colormap_color = 'viridis_r'
+colormap_lower = 13
+colormap_upper = 18
+
+
+['CurveFilter']
+active = false
+signal_min = 12.5
+min_R2 = 0.2
