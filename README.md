@@ -1,7 +1,4 @@
-<div align="center">
-  <img src="https://www.proteomicsdb.org/img/decryptm_logo.07b872e8.png" style="background-color:white;"><br>
-</div>
-
+![logo](logo.png?raw=true)
 
 -----------------
 
