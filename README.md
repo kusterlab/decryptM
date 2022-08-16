@@ -45,7 +45,7 @@ the decryptM approach in their labs more quickly.
 ## Run pipeline
 #### 1. Search your TMT-data with MaxQuant
 
-#### 2. In case of fullproteome data, transform the proteinGroups.txt file
+#### 2. In case of global proteome data, transform the proteinGroups.txt file
 ```sh
 (decryptM)$ python ./decryptM/pg_transform.py <in_path>
 ```
