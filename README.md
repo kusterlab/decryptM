@@ -43,7 +43,9 @@ the decryptM approach in their labs more quickly.
 -----------------
 
 ## Run pipeline
-#### 1. Search your TMT-data with MaxQuant
+
+#### 1. Search your TMT-data with MaxQuant (v.1.6.x.x)
+A copy of version 1.6.12.0 can be downloaded via pride.
 
 #### 2. In case of global proteome data, transform the proteinGroups.txt file
 ```sh
