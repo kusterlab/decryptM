@@ -2,6 +2,9 @@
 
 -----------------
 
+[![DOI](https://zenodo.org/badge/523340827.svg)](https://zenodo.org/badge/latestdoi/523340827)
+
+-----------------
 
 ## What is it?
 
