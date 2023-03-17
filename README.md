@@ -3,7 +3,7 @@
 -----------------
 
 [![DOI](https://zenodo.org/badge/523340827.svg)](https://zenodo.org/badge/latestdoi/523340827)
-
+[![DOI](https://img.shields.io/badge/DOI-10.1126%2Fscience.ade3925-%23B31B1B)](https://science.org/doi/10.1126/science.ade3925)
 -----------------
 
 ## What is it?
