@@ -21,6 +21,12 @@ the decryptM approach in their labs more quickly.
 
 -----------------
 
+We have developed a better way of analyzing dose-reponse curves using p-values for individual curves.
+
+For more information, please visit: [![Static Badge TO CurveCurator](https://img.shields.io/badge/GitHub-CurveCurator-orange)](https://github.com/kusterlab/curve_curator)
+
+-----------------
+
 ## Installation:
 
 #### 1. Download the code of this repository and place it next to your data
